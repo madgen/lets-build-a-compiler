@@ -1,6 +1,6 @@
 require './cradle'
 
-class Expression
+class Compiler
   def initialize
     @cradle = Cradle.new
   end
@@ -82,7 +82,13 @@ class Expression
       @cradle.emitln "MOV rax, #{@cradle.get_num}"
     end
   end
+
+  class << self
+    def run
+      c = Compiler.new
+      c.expression
+    end
+  end
 end
 
-exp = Expression.new
-exp.expression
+Compiler.run
